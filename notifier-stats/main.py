@@ -18,13 +18,14 @@ app.add_middleware(
 )
 
 # Environment Variables
-GMAIL_ID = os.getenv("msv.akx@gmail.com")
-GMAIL_APP_PASS = os.getenv("wesyaxabmjkrqsab")
-TG_BOT_TOKEN = os.getenv("8669501465:AAFKy8fjrOMkjF_V1iRMWMYOc86d1lZFRl4")
-TG_OWNER_ID = os.getenv("8278825823")
+GMAIL_ID = os.getenv("GMAIL_ID")
+GMAIL_APP_PASS = os.getenv("GMAIL_APP_PASS")
+TG_BOT_TOKEN = os.getenv("TG_BOT_TOKEN")
+TG_OWNER_ID = os.getenv("TG_OWNER_ID")
 FIXED_RECIPIENT = "mihir.rmx@gmail.com"
 
 # HARDCODE KAR DO YAHAN - Sirf yahi email address use hoga
+
 
 class AlertData(BaseModel):
     subject: str
@@ -32,9 +33,11 @@ class AlertData(BaseModel):
     email_html_message: str
     # to_email: str = None   # Isko comment out kar diya ya hata diya
 
+
 @app.get("/")
 def health_check():
     return {"status": "OK", "message": "Mail & TG Alert API is Running smoothly! 🚀"}
+
 
 @app.post("/send")
 def send_alert(data: AlertData):
@@ -54,9 +57,9 @@ def send_alert(data: AlertData):
                     "chat_id": TG_OWNER_ID,
                     "text": tg_text,
                     "parse_mode": "HTML",
-                    "disable_web_page_preview": True
+                    "disable_web_page_preview": True,
                 },
-                timeout=10
+                timeout=10,
             )
             if tg_resp.status_code != 200:
                 errors.append(f"Telegram Error: {tg_resp.text}")
@@ -73,17 +76,17 @@ def send_alert(data: AlertData):
         target_email = FIXED_RECIPIENT
 
         msg = EmailMessage()
-        msg['Subject'] = data.subject
-        msg['From'] = f"Bot Alerts <{GMAIL_ID}>"
-        msg['To'] = target_email
+        msg["Subject"] = data.subject
+        msg["From"] = f"Bot Alerts <{GMAIL_ID}>"
+        msg["To"] = target_email
 
         # Fallback for old devices
         msg.set_content("Please enable HTML to view this email.")
         # Main HTML content
-        msg.add_alternative(data.email_html_message, subtype='html')
+        msg.add_alternative(data.email_html_message, subtype="html")
 
         try:
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            with smtplib.SMTP_SSL("smtp.gmail.com", 465) as smtp:
                 smtp.login(GMAIL_ID, GMAIL_APP_PASS)
                 smtp.send_message(msg)
         except Exception as e:
@@ -97,10 +100,10 @@ def send_alert(data: AlertData):
     if len(errors) == 0:
         return {
             "status": "OK",
-            "message": f"Alert successfully sent to Telegram & Email ({target_email})"
+            "message": f"Alert successfully sent to Telegram & Email ({target_email})",
         }
     else:
         return {
             "status": "PARTIAL_OK" if len(errors) == 1 else "FAILED",
-            "errors": errors
+            "errors": errors,
         }
