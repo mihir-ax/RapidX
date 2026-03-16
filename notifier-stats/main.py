@@ -6,7 +6,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 
-app = FastAPI(title="Mail & TG Alert API")
+app = FastAPI(title="Alerify")
 
 # Setup CORS
 app.add_middleware(
@@ -36,7 +36,7 @@ def health_check():
     # Simple clean JSON response (No faltu HTML)
     return {
         "status": "OK",
-        "message": "Mail & TG Alert API is Running smoothly! 🚀",
+        "message": "Alerify Running smoothly! 🚀",
         "fixed_email": FIXED_RECIPIENT
     }
 
