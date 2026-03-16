@@ -36,27 +36,16 @@ class AlertData(BaseModel):
 @app.get("/", response_class=HTMLResponse)
 async def home():
     return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>Alertifer - Notification System</title>
-        <style>
-            body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); margin: 0; padding: 20px; color: white; }
-            .container { background: rgba(255,255,255,0.95); border-radius: 10px; padding: 30px; max-width: 800px; margin: 0 auto; color: #333; }
-            h1 { color: #667eea; }
-            .status { background: #48bb78; color: white; padding: 10px; border-radius: 5px; display: inline-block; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <h1>🚀 Alertifer</h1>
-            <div class="status">✅ System Operational</div>
-            <p>Welcome to Alertifer - Your notification API for Email & Telegram alerts!</p>
-            <p>📧 Fixed Recipient: mihir.rmx@gmail.com</p>
-            <p>📱 <a href="/start">Quick Start Guide</a> | <a href="/health">Health Check</a></p>
-        </div>
-    </body>
-    </html>
+    <!DOCTYPE html><html lang="en">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Alertifer</title><style>
+*{margin:0;padding:0;box-sizing:border-box;font-family: system-ui, -apple-system, sans-serif;}
+body{height:100vh;display:flex;align-items:center;justify-content:center;background:#f4f4f4;color:#111;}
+.container{max-width:700px;padding:40px;}
+.status{font-size:14px;letter-spacing:2px;margin-bottom:20px;display:flex;align-items:center;gap:8px;}.status::before{content:"⚠";}
+h1{font-size:70px;font-weight:800;line-height:1.1;margin-bottom:20px;}p{font-size:18px;color:#444;}
+.footer{margin-top:30px;font-size:14px;color:#777;}</style></head><body>
+<div class="container"><div class="status">STATUS: CLOSED</div><h1>Bye Bye.</h1><p>None of your business.</p></div></body>
+</html>
     """
 
 
