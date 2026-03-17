@@ -133,46 +133,90 @@ def send_otp(data: OTPRequest):
 
     # 3. Premium Professional HTML Template
     premium_html = f"""
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    </head>
-    <body style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; margin: 0; padding: 0;">
-        <div style="max-width: 600px; margin: 40px auto; background-color: #ffffff; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
-            
-            <!-- Header -->
-            <div style="background-color: #4f46e5; padding: 30px 20px; text-align: center;">
-                <h1 style="color: #ffffff; margin: 0; font-size: 28px; font-weight: 600; letter-spacing: 1px;">{data.app_name}</h1>
-            </div>
-            
-            <!-- Body -->
-            <div style="padding: 40px 30px; text-align: center;">
-                <h2 style="color: #333333; margin-top: 0; font-size: 22px;">Verify Your Email</h2>
-                <p style="color: #666666; font-size: 16px; line-height: 1.5; margin-bottom: 30px;">
-                    Hello! You requested a one-time password to access your account. Please use the verification code below to proceed.
+<!DOCTYPE html><html><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #111111 !important;
+    }
+    .container {
+        background-color: #1a1a1a !important;
+    }
+    .text {
+        color: #eeeeee !important;
+    }
+    .subtext {
+        color: #bbbbbb !important;
+    }
+    .otp-box {
+        background-color: #2a2a2a !important;
+        color: #ffffff !important;
+    }
+    .footer {
+        background-color: #161616 !important;
+        color: #aaaaaa !important;
+    }
+}
+</style>
+</head>
+<body style="margin:0; padding:0; background:#f4f4f4; font-family: Arial, sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" bgcolor="#f4f4f4">
+<tr>
+<td align="center" style="padding:30px 10px;">
+    <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" 
+           style="max-width:480px;" class="container">
+        <tr>
+            <td align="center" style="padding:25px 20px 10px 20px;">
+                                <img src="https://via.placeholder.com/60"
+                     width="60"
+                     height="60"
+                     alt="Logo"
+                     style="display:block; margin-bottom:10px;">
+                <h1 style="margin:0; font-size:20px; color:#111;" class="text">
+                    {data.app_name}
+                </h1>
+            </td>
+        </tr>
+        <tr>
+            <td height="1" bgcolor="#eaeaea"></td>
+        </tr>
+        <tr>
+            <td align="center" style="padding:30px 20px;">
+                <h2 style="margin:0 0 10px 0; font-size:18px; color:#222;" class="text">
+                    Verify your email
+                </h2>
+                <p style="font-size:14px; color:#666; line-height:1.5; margin:0 0 25px 0;" class="subtext">
+                    Use the verification code below to continue.
                 </p>
-                
-                <!-- OTP Box -->
-                <div style="background-color: #f8fafc; border: 2px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin: 0 auto; width: fit-content;">
-                    <span style="font-size: 36px; font-weight: bold; color: #0f172a; letter-spacing: 5px;">{otp}</span>
-                </div>
-                
-                <p style="color: #94a3b8; font-size: 14px; margin-top: 30px;">
-                    This code is valid for the next 10 minutes. If you did not request this, please ignore this email.
+                <table cellpadding="0" cellspacing="0" align="center">
+                    <tr>
+                        <td align="center" bgcolor="#f0f0f0" 
+                            style="padding:12px 20px; font-size:24px; font-weight:bold; letter-spacing:4px; color:#111;"
+                            class="otp-box">
+                            {otp}
+                        </td>
+                    </tr>
+                </table>
+                <p style="font-size:12px; color:#999; margin:20px 0 0 0;" class="subtext">
+                    This code expires in 10 minutes.
                 </p>
-            </div>
-            
-            <!-- Footer -->
-            <div style="background-color: #f8fafc; padding: 20px; text-align: center; border-top: 1px solid #e2e8f0;">
-                <p style="color: #64748b; font-size: 12px; margin: 0;">
-                    Securely sent by <strong>Alerify Auth Services</strong>
+            </td>
+        </tr>
+        <tr>
+            <td align="center" bgcolor="#fafafa" 
+                style="padding:20px; border-top:1px solid #eaeaea;" 
+                class="footer">
+                <p style="margin:0; font-size:12px; color:#888;">
+                    If you didn’t request this, you can ignore this email.
                 </p>
-            </div>
-        </div>
-    </body>
-    </html>
+            </td>
+        </tr>
+    </table>
+</td>
+</tr>
+</table>
+</body>
+</html>
     """
 
     # 4. Prepare Email
