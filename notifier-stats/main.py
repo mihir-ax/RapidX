@@ -162,7 +162,7 @@ def send_otp(data: OTPRequest):
 <body style="margin:0; padding:0; background:#f4f4f4; font-family: Arial, sans-serif;">
 <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#f4f4f4">
 <tr>
-<td align="center" style="padding:30px 10px;">
+<td align="center">
     <table width="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff" 
            style="max-width:480px;" class="container">
         <tr>
