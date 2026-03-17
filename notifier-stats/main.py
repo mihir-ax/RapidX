@@ -135,28 +135,28 @@ def send_otp(data: OTPRequest):
     premium_html = f"""
 <!DOCTYPE html><html><head><meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0"><style>
-@media (prefers-color-scheme: dark) {
-    body {
+@media (prefers-color-scheme: dark) {{
+    body {{
         background-color: #111111 !important;
-    }
-    .container {
+    }}
+    .container {{
         background-color: #1a1a1a !important;
-    }
-    .text {
+    }}
+    .text {{
         color: #eeeeee !important;
-    }
-    .subtext {
+    }}
+    .subtext {{
         color: #bbbbbb !important;
-    }
-    .otp-box {
+    }}
+    .otp-box {{
         background-color: #2a2a2a !important;
         color: #ffffff !important;
-    }
-    .footer {
+    }}
+    .footer {{
         background-color: #161616 !important;
         color: #aaaaaa !important;
-    }
-}
+    }}
+}}
 </style>
 </head>
 <body style="margin:0; padding:0; background:#f4f4f4; font-family: Arial, sans-serif;">
