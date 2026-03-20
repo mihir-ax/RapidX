@@ -4,8 +4,8 @@ import requests
 from datetime import datetime
 
 # 🌍 ENVIRONMENT VARIABLES
-NEXUS_API_URL = os.getenv("NEXUS_API_URL", "https://your-nexus-app.vercel.app/api/uptime")
-ALERIFY_API_URL = os.getenv("ALERIFY_API_URL", "https://your-alerify-app.onrender.com/send")
+NEXUS_API_URL = os.getenv("NEXUS_API_URL", "https://nexus-lemon-beta.vercel.app/api/uptime")
+ALERIFY_API_URL = os.getenv("ALERIFY_API_URL", "https://rapid-x-chi.vercel.app/send")
 
 def fetch_targets():
     """Fetch live URLs to monitor directly from Nexus Database"""
