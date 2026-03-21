@@ -120,7 +120,7 @@ def background_worker():
     while True:
         run_radar_sweep()
         # Sleep for 5 Minutes (300 seconds)
-        time.sleep(300)
+        time.sleep(60)
 
 @app.route('/')
 def health_check():
